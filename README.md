@@ -1,0 +1,2 @@
+# NewsScraper
+MongoDB News Scraper
