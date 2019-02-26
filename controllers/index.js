@@ -15,28 +15,22 @@ module.exports = function(app) {
     // A GET route for scraping 
 app.get("/scrape", function (req, res) {
     // First, we grab the body of the html with request
-    axios.get("http://www.espn.com/soccer/").then(function (response) {
+    axios.get("http://www.espn.com/mma/").then(function (response) {
       // Load that into cheerio and save it to $ for a shorthand selector
       var $ = cheerio.load(response.data);
       var results = [];
       // Grab every h2 within an article tag, and do the following:
-      $(".text-container").each(function (i, element) {
+      $(".contentItem__contentWrapper").each(function (i, element) {
         // Save an empty result object
         var result = {};
   
         // Add the text and href of every link, and save them as properties of the result object
-        result.title = $(this)
-          .children('h2')
-          .children("a")
-          .text();
-        result.summary = $(this)
-          // .children("a")
-          .children("p")
-          .text();
-        result.link = $(this)
-          .children('h2')
-          .children("a")
-          .attr("href");
+        result.title = $(this).find(".contentItem__title").text();
+         
+        result.summary = $(this).find(".contentItem__subhead").text();
+
+        result.link = "http://www.espn.com" + $(this).find("a").attr("href");
+        
         console.log("result" + result.title)
         results.push(result);
         // Create a new Article using the `result` object built from scraping
