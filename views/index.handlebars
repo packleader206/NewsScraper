@@ -1,0 +1,72 @@
+<div class ="container">
+    <div class=jumbotron>
+        <h2 id="mainHeading">Mixed Martial Arts News Scraper</h2>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0"; >
+                    <li class="nav-item active">
+                        <a href="/scrape" data-target="#scrapeComplete" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">SCRAPE</a>
+                    </li>
+                        <li style="margin-left:600px"> <a href="/" class="btn btn-link btn-md active" role="button" aria-pressed="true"><h5>Home</h5></a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/saved" class="btn btn-link btn-md active" role="button" aria-pressed="true"><h5>Saved Articles</h5></a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <div id="wrapper">
+        <div id="articles">
+            <ul>
+            {{#each Article mode="prepend"}} {{#unless saved}}
+                <div class="card" style="width: 60rem;">
+    
+                    <div class="card-title">
+                        <a style="font-size:25px" href={{this.link}}>{{this.title}}</a>
+                        <form action="/articles/{{this.id}}?_method=PUT" method="POST">
+                            <input type="hidden" name="saved" value="true" id="saveArticle">
+                            <button class="btn btn-primary"style="float:right; margin-right:20px" type="submit">Save Article</button>
+    
+                        </form>
+                    </div>
+                       
+                    <div class="card-body">
+                        <div class="card-text">
+                            <p>{{this.summary}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <button class='btn btn-info add' data-id={{this.id}} id="notesBtn">Add Note</button>
+                            <div id="notes"></div>
+                        </div>
+                    </div>
+                </div>
+            {{/unless}} {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="scrapecomplete myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Scrape</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Scrape completed!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
