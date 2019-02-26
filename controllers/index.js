@@ -31,7 +31,7 @@ app.get("/scrape", function (req, res) {
 
         result.link = "http://www.espn.com" + $(this).find("a").attr("href");
 
-        console.log("result" + result.title)
+        console.log("result: " + result.title)
         results.push(result);
         // Create a new Article using the `result` object built from scraping
         db.Article.create(result)
