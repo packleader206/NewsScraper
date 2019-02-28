@@ -25,11 +25,7 @@
                 <div class="card" style="width: 60rem;">
                     <div class="card-title">
                         <a style="font-size:25px" href={{this.link}}>{{this.title}}</a>
-                        <form action="/articles/{{this.id}}?_method=PUT" method="POST">
-                            <input type="hidden" name="saved" value="true" id="saveArticle">
-                            <button class="btn btn-primary" style="float:right; margin-right:20px" type="submit">Save Article</button>
-
-                        </form>
+                    <!-- Need button here to delete selected record -->
                     </div>
 
                     <div class="card-body">

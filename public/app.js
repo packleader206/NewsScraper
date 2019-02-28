@@ -1,3 +1,12 @@
+    // Test Click Handler for submitButton
+    // $("#submitButton").click(function (req, res) {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "/scrape"
+    //     });
+    //     res.redirect("/");
+    //     location.reload();
+    // });
 
     // Click handler for saveArticle button
     $("#saveArticle").click(function (req, res) {
@@ -16,7 +25,7 @@
     });
     
     // Click handler for Notes button
-    $(document).on("click", "#notesBtn", function() {
+    $(document).on("click", "#notesclick", function() {
 
         // Empty the notes from the note section
         $("#notes").empty();
