@@ -62,3 +62,12 @@ Users can retrieve the latest Mixed Martial Arts news stories from ESPN.com by h
 
 ## Screenshots:
 
+<img src="https://packleader206.github.io/NewsScraper/public/homeScreenshot.png" alt="Home Page Screenshot">
+ 
+ <br>
+ 
+ <img src="https://packleader206.github.io/NewsScraper/public/articlesScreenshot.png" alt="Articles Screenshot">
+ 
+ <br>
+ 
+ <img src="https://packleader206.github.io/NewsScraper/public/addNoteScreenshot.png" alt="Add Note Screenshot">
