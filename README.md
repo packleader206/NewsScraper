@@ -61,9 +61,4 @@ Once you have MongoDB installed, you will need to create a database called "news
 Users can retrieve the latest Mixed Martial Arts news stories from ESPN.com by hitting "Scrape" button.  Each article displays the headline and a brief summary of the article's content, and users can navigate to and read the full news story by clicking on the Title. Users also have the ability to Save articles of their choosing and access those articles by navigating to the Saved articles page. Users also have the ability to add and save notes for each news article. 
 
 ## Screenshots:
-- Login Page
-![](public/images/login_screenshot.png) 
-- Main Page
-![](public/images/main_screenshot.png) 
-- Add New Item page
-![](public/images/addItem_screenshot.png) 
+
