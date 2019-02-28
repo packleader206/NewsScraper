@@ -6,6 +6,10 @@ body {
     margin-left: 40px;
 }
 
+#subHeading {
+    margin-left: 40px;
+}
+
 .jumbotron {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight: bolder;
