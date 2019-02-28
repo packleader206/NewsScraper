@@ -21,30 +21,39 @@ app.get("/scrape", function (req, res) {
       var results = [];
       // Grab sepecified elements that we want for each article
       $(".contentItem__content").each(function (i, element) {
-        // Save an empty result object
-        var result = {};
+            // Save an empty result object
+            var result = {};
   
-        // Specifies the data that we want to extract
-        result.title = $(this).find(".contentItem__title").text();
-         
-        result.summary = $(this).find(".contentItem__subhead").text();
+            // Specifies the data that we want to extract
+            result.title = $(this).find(".contentItem__title").text();
+            
+            result.summary = $(this).find(".contentItem__subhead").text();
 
-        result.link = "http://www.espn.com" + $(this).find("a").attr("href");
+            result.link = "http://www.espn.com" + $(this).find("a").attr("href");
+            console.log(result);
+            console.log("result: " + result.title);
+            results.push(result);
 
-        console.log("result: " + result.title)
-        results.push(result);
-        // Create a new Article using the `result` object built from scraping
-        db.Article.create(result)
-          .then(function (dbArticle) {
-            // View the added result in the console
-            console.log("database" + dbArticle)
-            results.push(dbArticle);
-          })
-          .catch(function (err) {
-            // If an error occurred, send it to the client
-            return res.json(err);
-          });
-      });
+            // Conditional to check for undefined links.
+            // Only add articles to the DB that have a valid link and the extended path starts with "/mma"
+            if ($(this).find("a").attr("href") !== undefined && $(this).find("a").attr("href").startsWith("/mma")) {
+            // Create a new Article using the `result` object built from scraping
+                db.Article.create(result)
+                
+                .then(function (dbArticle) {
+                    // View the added result in the console
+                    console.log("database " + dbArticle)
+                    results.push(dbArticle);
+                    console.log(results);
+                })
+                .catch(function (err) {
+                    // If error, send to client
+                    return res.json(err);
+                });
+            }
+        });
+        res.json(result);
     });
+    res.redirect('/');
   });
 }
